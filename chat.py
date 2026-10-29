@@ -5,8 +5,8 @@ from dotenv import load_dotenv
 load_dotenv()
 
 client = OpenAI(
-    api_key=os.getenv("DEEPSEEK_API_KEY"),
-    base_url="https://api.deepseek.com"
+    api_key=os.getenv("ZHIPU_API_KEY"),
+     base_url="https://open.bigmodel.cn/api/paas/v4/"
 )
 
 messages = [
@@ -20,7 +20,7 @@ while True:
     messages.append({"role": "user", "content": user_input})
 
     response = client.chat.completions.create(
-        model="deepseek-chat",
+        model="glm-4.5-flash",
         messages=messages,
     )
     answer = response.choices[0].message.content
