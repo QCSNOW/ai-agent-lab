@@ -1,0 +1,6 @@
+streamlit
+chromadb
+openai
+python-dotenv
+numpy
+requests

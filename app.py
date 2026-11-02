@@ -4,10 +4,15 @@ import streamlit as st
 from openai import OpenAI
 from dotenv import load_dotenv
 
-load_dotenv()
+# 云端用 st.secrets 读 Key，本地用 .env
+if "ZHIPU_API_KEY" in st.secrets:
+    api_key = st.secrets["ZHIPU_API_KEY"]
+else:
+    load_dotenv()
+    api_key = os.getenv("ZHIPU_API_KEY")
 
 client = OpenAI(
-    api_key=os.getenv("ZHIPU_API_KEY"),
+    api_key=api_key,
     base_url="https://open.bigmodel.cn/api/paas/v4/"
 )
 
